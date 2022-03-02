@@ -1,0 +1,62 @@
+service: ${env:PRJ}-${env:ENV}
+variablesResolutionMode: 20210326
+useDotenv: true
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+provider:
+  name: aws
+  versionFunctions: false
+  region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
+  runtime: nodejs14.x
+  stage:
+    ${opt:stage,'local'}
+    # Environment Variables
+  environment:
+    DB_DIALECT: "mysql"
+    DB_NAME: ${env:TYPEORM_DATABASE}
+    DB_USERNAME: ${env:TYPEORM_USERNAME}
+    DB_PASSWORD: ${env:TYPEORM_PASSWORD}
+    DB_HOST: ${env:TYPEORM_HOST}
+    DB_PORT: ${env:TYPEORM_PORT}
+    COGNITO_USER_POOL_ID: ${env:COGNITO_USER_POOL_ID}
+    COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+    COGNITO_REGION: ${env:AWS_REGION}
+package:
+  individually: true
+  patterns:
+    - "!dist/apps/**"
+    - "!apps/**"
+    - "!.env"
+    - "!.env.*"
+    - "!.prettierrc"
+    - "!README.md"
+    - "!docker-compose.yml"
+    - "!*.json"
+    - "!*.js"
+    - "!images/**"
+    - "!libs/database/src/database/**"
+    - "!node_modules/**"
+    - "!cognito-custom-email-sender/**"
+functions:
+  users:
+    handler: dist/apps/users/main.handler
+    package:
+      patterns:
+        - dist/apps/users/**
+    events:
+      - http:
+          method: ANY
+          path: /users
+      - http:
+          method: ANY
+          path: "/users/{proxy+}"
+  cognito-custom-email-sender:
+    handler: cognito-custom-email-sender/handler.handleCognitoEvents
+    package:
+      patterns:
+        - cognito-custom-email-sender/**
+    environment:
+      CLOUDFRONT_DOMAIN_NAME: d1qpy2p0a2fvkp.cloudfront.net

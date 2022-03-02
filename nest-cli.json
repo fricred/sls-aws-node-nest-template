@@ -1,0 +1,84 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/users/src",
+  "monorepo": true,
+  "root": "apps/users",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/users/tsconfig.app.json"
+  },
+  "projects": {
+    "database": {
+      "type": "library",
+      "root": "libs/database",
+      "entryFile": "index",
+      "sourceRoot": "libs/database/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/database/tsconfig.lib.json"
+      }
+    },
+    "users": {
+      "type": "application",
+      "root": "apps/users",
+      "entryFile": "main",
+      "sourceRoot": "apps/users/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users/tsconfig.app.json"
+      }
+    },
+    "values-definitions": {
+      "type": "application",
+      "root": "apps/values-definitions",
+      "entryFile": "main",
+      "sourceRoot": "apps/values-definitions/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/values-definitions/tsconfig.app.json"
+      }
+    },
+    "users": {
+      "type": "application",
+      "root": "apps/users",
+      "entryFile": "main",
+      "sourceRoot": "apps/users/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users/tsconfig.app.json"
+      }
+    },
+    "users-users": {
+      "type": "application",
+      "root": "apps/users-users",
+      "entryFile": "main",
+      "sourceRoot": "apps/users-users/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users-users/tsconfig.app.json"
+      }
+    },
+    "groups": {
+      "type": "application",
+      "root": "apps/groups",
+      "entryFile": "main",
+      "sourceRoot": "apps/groups/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/groups/tsconfig.app.json"
+      }
+    },
+    "auth": {
+      "type": "library",
+      "root": "libs/auth",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth/tsconfig.lib.json"
+      }
+    },
+    "sites": {
+      "type": "application",
+      "root": "apps/sites",
+      "entryFile": "main",
+      "sourceRoot": "apps/sites/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/sites/tsconfig.app.json"
+      }
+    }
+  }
+}
