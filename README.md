@@ -1,10 +1,10 @@
-![Logo of the project](images/wecare.png?raw=true 'WeCare Logo')
+![Logo of the project](images/revstar.png?raw=true 'WeCare Logo')
 
 # We Care Services
 
 > Serverless base project
 
-This is the backend services project for the wecare Web and mobile apps
+This is the backend services project for the revstar Web and mobile apps
 
 ## Installing / Getting started
 

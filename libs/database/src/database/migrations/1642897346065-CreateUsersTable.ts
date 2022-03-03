@@ -22,20 +22,8 @@ export class CreateUsersTable1642897346065 implements MigrationInterface {
             \`date_invited\` DATETIME NULL,
             \`date_registered\` DATETIME NULL,
             \`last_login\` DATETIME NULL,
-            PRIMARY KEY (\`id\`),
-            INDEX \`fk_USERS_VALUES_DEFINITIONS1_idx\` (\`status_id\` ASC),
-            INDEX \`fk_USERS_VALUES_DEFINITIONS2_idx\` (\`type_id\` ASC),
-            UNIQUE INDEX \`email_UNIQUE\` (\`email\` ASC),
-            CONSTRAINT \`fk_USERS_VALUES_DEFINITIONS1\`
-            FOREIGN KEY (\`status_id\`)
-            REFERENCES \`${this.db}\`.\`VALUES_DEFINITIONS\` (\`value_definition_id\`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
-            CONSTRAINT \`fk_USERS_VALUES_DEFINITIONS2\`
-            FOREIGN KEY (\`type_id\`)
-            REFERENCES \`${this.db}\`.\`VALUES_DEFINITIONS\` (\`value_definition_id\`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION)
+            PRIMARY KEY (\`id\`)
+            )
             `,
     );
   }

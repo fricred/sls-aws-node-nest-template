@@ -51,8 +51,10 @@ export class User {
   last_login: Date;
 
   @Column({ nullable: true })
-  user_system_rol: String;
+  status_id: number;
 
   @Column({ nullable: true })
-  employee_id: String;
+  type_id: number;
+
+
 }

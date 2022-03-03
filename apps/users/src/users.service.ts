@@ -16,7 +16,7 @@ export class UsersService {
 
   private cognitoIdentityServiceProvider: any;
 
-  constructor(@InjectRepository(User) repo) {
+  constructor(@InjectRepository(User) private repo, public dbService: DatabaseService) {
     this.cognitoIdentityServiceProvider =
       new AWS.CognitoIdentityServiceProvider({
         region: process.env.COGNITO_REGION,
@@ -80,6 +80,12 @@ export class UsersService {
   }
 
   getHello(): string {
+    console.log(`UsersService >> getHello`,this.dbService.getHelloFromLibrary());
     return 'Hello World!';
+  }
+
+  async listUsers():Promise<User[]>{
+    const users : User[]= await this.repo.find();
+    return users;
   }
 }

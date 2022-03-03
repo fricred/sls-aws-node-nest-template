@@ -1,10 +1,9 @@
-# For more information: https://laravel.com/docs/sail
 version: '3'
 services:
   mysql:
     image: "mysql:5.7"
     ports:
-      - "${FORWARD_DB_PORT:-3306}:3306"
+      - "${FORWARD_TYPEORM_PORT:-3306}:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "${TYPEORM_PASSWORD}"
       MYSQL_DATABASE: "${TYPEORM_DATABASE}"
