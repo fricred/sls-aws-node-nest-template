@@ -36,4 +36,3 @@ lerna-debug.log*
 !.vscode/extensions.json
 secrets_local.json
 .env
-/templates
